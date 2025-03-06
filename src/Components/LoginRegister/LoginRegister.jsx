@@ -17,7 +17,7 @@ const LoginRegister = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();  
-        navigate('/admin');
+        navigate('/vendor');
     };
 
     return (

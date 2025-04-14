@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Orders.css"
 const Orders = () => {
   const [orders, setOrders] = useState([
-    { id: 1, customer: "John Doe", medicine: "Paracetamol", status: "Pending" },
+    { id: 1, customer: "prince", medicine: "Paracetamol", status: "Pending" },
   ]);
 
   const updateStatus = (id, status) => {

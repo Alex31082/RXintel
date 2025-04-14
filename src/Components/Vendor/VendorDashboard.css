@@ -70,40 +70,8 @@
   }
   
   
-  .vendor-content {
-    padding: 15px;
-    background-color: transparent;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  .add-button {
-    padding: 8px 12px;
-    background: black;
-    color: white;
-    border: none;
-    border-radius: px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .add-button:hover {
-    background: darkgray;
-  }
-  .delete-button {
-    background: #ff4d4d;
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
-    cursor: pointer;
-  }
-  input {
-    padding: 1px;
-    border: 2px solid black; /* Thick border */
-    border-radius: 15px;
-    font-size: 15px;
-    width: 100px;
-  }
-  
+
+ 
+ 
   
   

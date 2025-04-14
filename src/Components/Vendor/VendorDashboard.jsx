@@ -4,6 +4,7 @@ import Orders from "./Orders";
 import Transactions from "./Transactions";
 import Reports from "./Reports";
 import "./VendorDashboard.css";
+import Address from "./address";
 
 
 const VendorDashboard = () => {
@@ -16,7 +17,7 @@ const VendorDashboard = () => {
 
         {/* Navigation Tabs */}
         <div className="vendor-tabs">
-          {["inventory", "orders", "transactions", "reports"].map((tab) => (
+          {["inventory", "orders", "transactions", "reports","address"].map((tab) => (
             <button
               key={tab}
               className={`vendor-tab-button ${activeTab === tab ? "active-tab" : ""}`}
@@ -33,6 +34,7 @@ const VendorDashboard = () => {
           {activeTab === "orders" && <Orders />}
           {activeTab === "transactions" && <Transactions />}
           {activeTab === "reports" && <Reports />}
+          {activeTab === "address" && <Address />}
         </div>
       </div>
     </div>

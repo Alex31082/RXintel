@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
 import './LoginRegister.css';
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
 
 const LoginRegister = () => {
     const [action, setAction] = useState('');
-    const navigate = useNavigate();
+
 
     const registerLink = () => {
         setAction('active'); 
@@ -14,11 +13,20 @@ const LoginRegister = () => {
     const loginLink = () => {
         setAction(''); 
     };
-
     const handleLogin = (e) => {
-        e.preventDefault();  
-        navigate('/vendor');
+        e.preventDefault();
+        console.log("Login form submitted");
+        
     };
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        console.log("Registration form submitted");
+        
+    };
+
+
+
 
     return (
         <div className={`wrapper ${action}`}>
@@ -48,7 +56,9 @@ const LoginRegister = () => {
 
             {/* Registration Form */}
             <div className='form-box register'>
-                <form action="">
+            
+                <form onSubmit={handleRegister}>
+
                     <h1>Registration</h1>
 
                     <div className='input-box'>

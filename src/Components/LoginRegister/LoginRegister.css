@@ -119,3 +119,7 @@ form button:hover {
   color: #1d00fc;
   text-decoration: underline;
 }
+.remember-forgot label {
+  color: black;
+}
+

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { FiSearch, FiShoppingCart, FiUser } from 'react-icons/fi';
+import { Link } from 'react-router-dom';  // Import Link for navigation
 import rxlogo from '../Assets/rxlogo.png';
 import './user.css';
-
 export default function MedicalNavbar() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeMenu, setActiveMenu] = useState('All Medical Products');
@@ -18,8 +18,8 @@ export default function MedicalNavbar() {
 
   const filterOptions = [
     'All Products',
-    'Prescription Required',
-    'No Prescription Needed'
+    'Healthcare Devices',
+    'Medicines',
   ];
 
   return (
@@ -44,9 +44,12 @@ export default function MedicalNavbar() {
 
         <div className="nav-right">
           <FiShoppingCart className="nav-icon" />
-          <button className="sign-in-btn">
-            <FiUser /> <span className="btn-text">Sign In</span>
-          </button>
+          {/* Link the Sign In button to Login page */}
+          <Link to="./Login">
+            <button className="sign-in-btn">
+              <FiUser /> <span className="btn-text">Sign In</span>
+            </button>
+          </Link>
         </div>
       </div>
 

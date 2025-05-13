@@ -1,0 +1,105 @@
+/* General Form Styling */
+.form-box {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .form-box h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .input-box {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  
+  .input-box input,
+  .input-box select {
+    width: 100%;
+    padding: 10px;
+    padding-left: 40px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .input-box select {
+    cursor: pointer;
+  }
+  
+  .input-box input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  /* Icon Styling */
+  .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #888;
+  }
+  
+  /* Button Styling */
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .form-box {
+      padding: 15px;
+    }
+  
+    .form-box h1 {
+      font-size: 20px;
+    }
+  
+    .input-box input,
+    .input-box select {
+      font-size: 14px;
+    }
+  
+    button {
+      font-size: 14px;
+    }
+  }
+  

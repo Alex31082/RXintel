@@ -1,0 +1,123 @@
+/* AddMed.css */
+
+.add-med-form {
+    background-color: #ffffff; /* white background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .add-med-form div {
+    margin-bottom: 15px;
+  }
+  
+  .add-med-form label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #7e57c2; /* semi-light purple */
+    margin-bottom: 5px;
+  }
+  
+  .add-med-form input[type="text"],
+  .add-med-form input[type="number"],
+  .add-med-form input[type="date"],
+  .add-med-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    transition: all 0.3s ease;
+  }
+  
+  .add-med-form textarea {
+    resize: vertical;
+    height: 120px;
+  }
+  
+  .add-med-form input[type="file"] {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+  }
+  
+  .add-med-form button[type="submit"] {
+    background-color: #007bff; /* blue button */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .add-med-form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .add-med-form button[type="submit"]:focus {
+    outline: none;
+  }
+  
+  .add-med-form input[type="text"]:focus,
+  .add-med-form input[type="number"]:focus,
+  .add-med-form input[type="date"]:focus,
+  .add-med-form textarea:focus {
+    border-color: #7e57c2;
+    box-shadow: 0 0 5px rgba(126, 87, 194, 0.4);
+  }
+  
+  .add-med-form input[type="number"] {
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  .add-med-form input[type="number"]::-webkit-outer-spin-button,
+  .add-med-form input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .add-med-form div:last-child {
+    text-align: center;
+  }
+  
+  .add-med-form input::placeholder,
+  .add-med-form textarea::placeholder {
+    color: #9e9e9e;
+  }
+
+  .image-upload-section {
+    margin: 1rem 0;
+  }
+
+  .image-preview {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f9f9f9;
+  }
+
+  .image-preview img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }

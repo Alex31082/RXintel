@@ -24,3 +24,5 @@ yarn-error.log*
 
 # Ignore .env file containing sensitive information
 .env
+__pycache__/
+*.pyc

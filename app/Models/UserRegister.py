@@ -2,8 +2,8 @@ from pydantic import BaseModel, EmailStr, Field
 
 class UserRegister(BaseModel):
     username: str = Field(..., min_length=3)
-    firstname: str
-    lastname: str
+    first_name: str
+    last_name: str
     email: EmailStr
     phone: str
     age: int

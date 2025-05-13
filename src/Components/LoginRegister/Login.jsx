@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
-import { FaUser, FaLock } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';  // Added useNavigate from react-router-dom
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Login = ({ onSwitch }) => {
-  // State for storing form input and errors
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  
-  // Using useNavigate hook to handle redirection
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Handle login form submission
   const handleLogin = async (e) => {
     e.preventDefault();
-    
+
     // Validate input
-    if (!email || !password) {
+    if (!username || !email || !password) {
       setError('Please fill in all fields.');
       return;
     }
+    setIsLoading(true);
 
     try {
       const response = await fetch("http://localhost:8000/api/login/", {
@@ -28,27 +26,25 @@ const Login = ({ onSwitch }) => {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ username, email, password })
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // Store JWT in localStorage
         localStorage.setItem("token", data.access_token);
-
-        // Redirect based on role
         if (data.role === "admin") {
-          navigate("/admin");
+          navigate("/AdminDashboard");
         } else if (data.role === "vendor") {
-          navigate("/vendor");
+          navigate("/VendorDashboard");
         } else {
           navigate("/User");
         }
       } else {
-        // Handle different error responses
-        if (data.detail) {
-          setError(data.detail); // Show error message if any
+        if (data && data.detail && typeof data.detail === "string") {
+          setError(data.detail); // Error message from backend
+        } else if (data && data.msg) {
+          setError(data.msg); // Fallback error message
         } else {
           setError('Something went wrong, please try again later.');
         }
@@ -56,14 +52,27 @@ const Login = ({ onSwitch }) => {
     } catch (err) {
       console.error('Error during login:', err);
       setError('Something went wrong, please try again later.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className='form-box login'>
+    <div className='login-form'>
       <form onSubmit={handleLogin}>
         <h1>Login</h1>
-        {error && <p className="error-message">{error}</p>} {/* Display error message if any */}
+        {error && <p className="error-message">{String(error)}</p>} {/* Display error */}
+        
+        <div className='input-box'>
+          <input 
+            type='text' 
+            placeholder='Username' 
+            value={username}
+            onChange={(e) => setUsername(e.target.value)} 
+            required
+          />
+        </div>
+
         <div className='input-box'>
           <input 
             type='email' 
@@ -72,8 +81,8 @@ const Login = ({ onSwitch }) => {
             onChange={(e) => setEmail(e.target.value)} 
             required
           />
-          <FaUser className='icon' />
         </div>
+
         <div className='input-box'>
           <input 
             type='password' 
@@ -82,12 +91,14 @@ const Login = ({ onSwitch }) => {
             onChange={(e) => setPassword(e.target.value)} 
             required
           />
-          <FaLock className='icon' />
         </div>
-        <button type="submit">Login</button>
+
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? 'Logging in...' : 'Login'}
+        </button>
+
         <p>
           Don't have an account? 
-          {/* Use Link to navigate to the Register page */}
           <Link to="/register" onClick={onSwitch}>Register</Link>
         </p>
       </form>

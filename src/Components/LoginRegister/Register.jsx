@@ -7,8 +7,8 @@ const Register = ({ onSwitch }) => {
   // State to handle form data
   const [formData, setFormData] = useState({
     username: '',
-    firstname: '',
-    lastname: '',
+    firstName: '',
+    lastName: '',
     address: '',
     phone: '',
     email: '',
@@ -16,9 +16,12 @@ const Register = ({ onSwitch }) => {
     age: '',
     password: '',
   });
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const [error, setError] = useState('');
-  const navigate = useNavigate();  // Use navigate to redirect
+  const navigate = useNavigate(); 
+   // Use navigate to redirect
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -32,6 +35,7 @@ const Register = ({ onSwitch }) => {
   // Handle registration form submission
   const handleRegister = async (e) => {
     e.preventDefault();
+  
 
     // Basic validation
     if (!formData.username || !formData.firstName || !formData.lastName || !formData.address ||
@@ -39,9 +43,11 @@ const Register = ({ onSwitch }) => {
       setError('Please fill in all fields.');
       return;
     }
+    setIsLoading(true); // Start loading    })
+
 
     try {
-      const response = await fetch("http://localhost:8000/api/register", {
+      const response = await fetch("http://localhost:8000/api/register/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,7 +68,7 @@ const Register = ({ onSwitch }) => {
         if (data.role === "admin") {
           navigate("/AdminDashboard");
         } else if (data.role === "vendor") {
-          navigate("/VendorDashboard");
+          navigate("/Vendor");
         } else {
           navigate("/User");
         }
@@ -79,10 +85,13 @@ const Register = ({ onSwitch }) => {
       console.error('Error during registration:', err);
       setError('Something went wrong, please try again later.');
     }
+    finally {
+      setIsLoading(false); // End loading
+    }
   };
 
   return (
-    <div className="form-box register">
+    <div className="form-box">
       <form onSubmit={handleRegister}>
         <h1>Registration</h1>
 
@@ -201,7 +210,10 @@ const Register = ({ onSwitch }) => {
           <label>
             <input type="checkbox" required /> I agree to the terms & conditions
           </label>
-          <button type="submit">Register</button>
+          
+        <button type="submit" disabled={isLoading}>
+  {isLoading ? 'Loading...' : 'Register'}
+</button>
         </div>
 
         <p>
